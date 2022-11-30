@@ -24,7 +24,7 @@ class RechercheGestionnaireController extends Controller{
     public function  BlocPoubelleListe($etab, $bloc_etab, $etage){
         $etab_id= Etablissement::where("nom_etablissement", $etab)->first()->id;
         $id_bloc_etablissement= Bloc_etablissement::where("etablissement_id",$etab_id)->where('nom_bloc_etablissement', $bloc_etab)->pluck("id");
-        $id_etage= Etage_etablissement::where("bloc_etablissement_id",$id_bloc_etablissement)->where('nom_etage_etablissement', $etage)->get();
+        $id_etage= Etage_etablissement::where("bloc_etablissement_id",$id_bloc_etablissement)->where('nom_etage_etablissement', $etage)->pluck("id");
         $bloc_poubelle= Bloc_poubelle::where("etage_etablissement_id", $id_etage)->get();
         return $bloc_poubelle;
     }

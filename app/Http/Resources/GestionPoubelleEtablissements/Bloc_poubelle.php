@@ -14,18 +14,29 @@ class Bloc_poubelle extends JsonResource{
             $deleted_at=  $this->deleted_at->translatedFormat('H:i:s j F Y');
         }
         $etage= Etage_etablissement::where('id',$this->etage_etablissement_id)->first();
-        $nom_etage= $etage->nom_etage_etablissement;
+        $nom_etage= $etage->nom_etage_etablissement ??"None";
+        if($nom_etage!=="None"){
         $bloc_etabl= Bloc_etablissement::where('id',$etage->bloc_etablissement_id)->first();
-        $nom_bloc_etabl= $bloc_etabl->nom_bloc_etablissement;
-        $etablissement= Etablissement::where('id',$bloc_etabl->etablissement_id)->first()->nom_etablissement;
+        $nom_bloc_etabl= $bloc_etabl->nom_bloc_etablissement??"None";
+        
+        }else{
+            $nom_bloc_etabl= "None";
+        }
+        if($nom_bloc_etabl!== "None"){
+   $etablissement= Etablissement::where('id',$bloc_etabl->etablissement_id)->first();
+        $nom_etab=$etablissement->nom_etablissement??"None";
+        }else{
+            $nom_etab="None";
+        }
+     
        return [
         'id' => $this->id,
 
         'etage_etablissement_id' => $this->etage_etablissement_id,
-
+        'nom_bloc_poubelle'=>$this->nom_bloc_poubelle,
         'etage'=>$nom_etage,
         'bloc_etabl'=>$nom_bloc_etabl,
-        'etablissement'=>$etablissement,
+        'etablissement'=>$nom_etab,
 
         'poubelle'=>$this->poubelles,
 

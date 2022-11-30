@@ -322,6 +322,7 @@ use App\Http\Controllers\Globale\MessageController;
                 /**                  bloc-poubelle                      */
                     Route::apiResource('bloc-poubelle', Bloc_poubelleController::class);
                     Route::controller(Bloc_poubelleController::class)->group(function () {
+                        Route::get('bloc-poubelle-all', 'index');
                         Route::get('bloc-poubelle-liste-suppression', 'listeSuppression');
                         Route::get('bloc-poubelle-excel', 'exportInfoExcel');
                         Route::get('bloc-poubelle-csv', 'exportInfoCSV');

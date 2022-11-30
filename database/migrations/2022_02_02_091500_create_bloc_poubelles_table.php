@@ -7,7 +7,7 @@ class CreateBlocPoubellesTable extends Migration{
         Schema::create('bloc_poubelles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('etage_etablissement_id')->constrained('etage_etablissements')->onDelete('cascade')->onUpdate('cascade');
-            
+            $table->string("nom_bloc_poubelle");
             $table->timestamps();
             $table->softDeletes();
         });

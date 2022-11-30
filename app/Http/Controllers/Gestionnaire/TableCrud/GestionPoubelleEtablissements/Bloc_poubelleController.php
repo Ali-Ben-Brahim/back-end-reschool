@@ -11,7 +11,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class Bloc_poubelleController extends BaseController{
     public function index(){
         $bloc_poubelle = Bloc_poubelle::all();
-        return $this->handleResponse(Bloc_poubelleResource::collection($bloc_poubelle), 'Affichage des blocs poubelle!');
+       return $this->handleResponse(Bloc_poubelleResource::collection($bloc_poubelle), 'Affichage des blocs poubelle!');
     }
     public function store(Bloc_poubelleRequest $request){
         $input = $request->all();
