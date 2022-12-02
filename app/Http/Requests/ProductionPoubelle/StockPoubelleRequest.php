@@ -17,7 +17,7 @@ class StockPoubelleRequest extends FormRequest{
                 'type_poubelle'=>'required',Rule::in(['composte', 'plastique','papier','canette']),
                 'quantite_disponible'=>'required|integer',
                 'description'=>'required|string',
-                'photo'=> 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                // 'photo'=> 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ];
         }else if($this->isMethod('PUT')){
             return [
