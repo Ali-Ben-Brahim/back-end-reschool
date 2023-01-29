@@ -18,7 +18,7 @@ class CompteSeeder extends Seeder{
         Gestionnaire::create([
             'nom'=> 'Ali',
             'prenom'=> 'Ben Brahim',
-            'photo'=>'ali.jpg',
+            'photo'=>'ali.png',
             'CIN'=> 13009889,
             'numero_telephone'=> 96901100,
             'email'=> 'benbrahimali23@gmail.com',

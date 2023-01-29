@@ -21,7 +21,6 @@ class CreateCamionsTable extends Migration{
             $table->float('volume_actuelle_canette')->nullable();
             $table->float('volume_carburant_consomme')->default(0);
             $table->float('Kilometrage')->default(0);
-            $table->unique( array('longitude','latitude'));
             $table->timestamps();
             $table->softDeletes();
         });

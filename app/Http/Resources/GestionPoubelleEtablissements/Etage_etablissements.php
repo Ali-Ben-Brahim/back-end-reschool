@@ -14,12 +14,10 @@ class Etage_etablissements extends JsonResource{
         }
         $bloc_etabl= Bloc_etablissement::where('id',$this->bloc_etablissement_id)->first();
         
-        $bloc_etabl_nom= $bloc_etabl->nom_bloc_etablissement??"None";
-        if($bloc_etabl_nom!=="None"){$etablissement= Etablissement::where('id',$bloc_etabl->etablissement_id)->first();
+        $bloc_etabl_nom= $bloc_etabl->nom_bloc_etablissement;
+     $etablissement= Etablissement::where('id',$bloc_etabl->etablissement_id)->first();
             $nom_etab=$etablissement->nom_etablissement;
-        }else{
-            $nom_etab="None";
-        }
+        
         return [
             'id' => $this->id,
             'nom_etage_etablissement' => $this->nom_etage_etablissement,

@@ -38,7 +38,6 @@ use Illuminate\Support\Facades\Route;
 
 /*                                 crud                     */
 use App\Http\Controllers\Gestionnaire\RechercheGestionnaireController;
-
 use App\Http\Controllers\Globale\SommeDechetController;
 use App\Http\Controllers\Auth\Gestionnaire\AuthGestionnaireController;
 use App\Http\Controllers\ResponsableEtablissement\SituationFinanciereController;
@@ -101,6 +100,7 @@ use App\Http\Controllers\Globale\MessageController;
                     Route::get('ouvrier-pdf-trashed/{id}', 'pdfTrashed');
                     Route::get('ouvrier-all-pdf-trashed', 'pdfAllTrashed');
                 });
+
             /**                 responsable commercial                                  */
                 Route::apiResource('responsable-commercial', ResponsableCommercialeController::class);
                 Route::controller(ResponsableCommercialeController::class)->group(function () {

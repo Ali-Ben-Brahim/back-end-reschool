@@ -12,6 +12,7 @@ class Ouvrier extends JsonResource{
             $deleted_at=  $this->deleted_at->translatedFormat('H:i:s j F Y');
         }
         $matricule= Camion::find($this->camion_id)->matricule;
+        
         return [
             'id' => $this->id,
             'camion_id'=> $this->camion_id,

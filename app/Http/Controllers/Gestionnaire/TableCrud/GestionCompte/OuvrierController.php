@@ -45,6 +45,8 @@ class OuvrierController extends BaseController{
     }
     public function update(OuvrierRequest $request, Ouvrier $ouvrier){
         $input = $request->all();
+        
+        
         if ($image = $request->file('photo')) {
             $destinationPath = 'storage/images/ouvrier';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -75,6 +77,21 @@ class OuvrierController extends BaseController{
             }
             $ouvrier->delete();
             return $this->handleResponse(new OuvrierResource($ouvrier), 'Ouvrier supprimé!');
+        }
+    }
+    public function editImage( $id) {
+        $ouvrier = Ouvrier::withTrashed()->where('id' ,  $id )->first();
+        if (is_null($ouvrier)) {
+            return $this->handleError('ouvrier n\'existe pas!');
+        }elseif($ouvrier->photo ==="default.jpeg" || $ouvrier->photo === NULL){
+            $ouvrier->forceDelete();
+            return $this->handleResponse(new OuvrierResource($ouvrier), 'ouvrier supprimé!');
+        } else{
+            if(File::exists(('storage\trashImages\ouvrier\\').$ouvrier->photo)){
+                unlink(public_path('storage\trashImages\ouvrier\\').$ouvrier->photo );
+            }
+            $ouvrier->forceDelete();
+            return $this->handleResponse(new OuvrierResource($ouvrier), 'ouvrier supprimé definitivement!');
         }
     }
 

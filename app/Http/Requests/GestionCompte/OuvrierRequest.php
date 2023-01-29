@@ -20,7 +20,8 @@ class OuvrierRequest extends FormRequest{
             'adresse' => 'required|string',
             'numero_telephone'=> 'required',
             'email' => 'required|email|max:50',
-            'photo' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'qrcode' => 'string',
 
             ];
         }else if($this->isMethod('PUT')){
@@ -32,7 +33,8 @@ class OuvrierRequest extends FormRequest{
                 'CIN' => 'sometimes|numeric',
                 'numero_telephone'=> 'sometimes|integer',
                 'email' => 'sometimes|email|max:50',
-                'photo' => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'photo' => 'string',
+                'qrcode' => 'string'
             ];
         }
     }
